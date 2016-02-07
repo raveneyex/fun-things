@@ -37,171 +37,111 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
+
 				<section>
 					<h1>ES2015 Fun Things</h1>
-					<h3>A Small Introduction to new and shiny things in JS</h3>
+					<h3>Some new and shiny things in JS</h3>
 					<p>
 						<small>Created by <a href="http://github.com/raveneyex/">Raven Eyex</a> / <a href="http://twitter.com/humobinario">@HumoBinario</a></small>
 					</p>
 				</section>
 
 				<section>
-					<h2>Hello There</h2>
-					<p>
-						reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
-					</p>
-				</section>
-
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>Slides can be nested inside of each other.</p>
-						<p>Use the <em>Space</em> key to navigate through all slides.</p>
-						<br>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>That's it, time to go back up.</p>
-						<br>
-						<a href="#/2">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						reveal.js comes with a few themes built in: <br>
-						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
-					</p>
+				  <h2>Contents</h2>
+				  <ul>
+				    <li><a href="#">New things</a></li>
+				    <li><a href="#">Fun things</a></li>
+				    <li><a href="#">Shiny things</a></li>
+				    <li><a href="#">Babel.js</a></li>
+				    <li><a href="#">Acknowledgements</a></li>
+				    <li><a href="#">References</a></li>
+				  </ul>
 				</section>
 
 				<section>
-					<section data-background="#dddddd">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
+					<h2>New things</h2>
+				</section>
+
+				<section>
+					<h2>Fun things</h2>
+				</section>
+
+				<section>
+					<h2>Shiny things</h2>
+				</section>
+
+				<section>
+					<h2>Babel.js</h2>
+				</section>
+
+				<section>
+					<section>
+						<h2>Acknowledgments</h2>
+						<ul>
+							<li>The ECMA body</li>
+							<li>The JavaScript community</li>
+							<li>Reveal.js</li>
+							<li>Velocity Partners</li>
+							<li>All the JS-fatigue articles on Medium</li>
+							<li>And...</li>
+						</ul>
 					</section>
 
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code class="hljs">&lt;section data-background="image.png"&gt;</code></pre>
+					<section>
+						<h2>Natalie Dormer</h2>
+						<img src="assets/natalydormer.jpg">
+						<p>Thanks for existing!</p>
 					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Tiled Backgrounds</h2>
-						<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-					<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
-						<div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
-							<h2>Video Backgrounds</h2>
-							<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
-						</div>
-					</section>
+				</section>
+
+				<section>
 					<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
 						<h2>... and GIFs!</h2>
 					</section>
-				</section>
-
-				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						Different background transitions are available via the backgroundTransition option. This one's called "zoom".
-					</p>
-					<pre><code class="hljs">Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
-				</section>
-
-				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
-					<p>
-						You can override background transitions per-slide.
-					</p>
-					<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
 				</section>
 
 				<section>
 					<h2>Pretty Code</h2>
 					<pre>
 						<code class="hljs" data-trim contenteditable>
-						function linkify( selector ) {
-						  if( supports3DTransforms ) {
+function linkify( selector ) {
+  if( supports3DTransforms ) {
 
-						    var nodes = document.querySelectorAll( selector );
+    var nodes = document.querySelectorAll( selector );
 
-						    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-						      var node = nodes[i];
+    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
+      var node = nodes[i];
 
-						      if( !node.className ) {
-						        node.className += ' roll';
-						      }
-						    }
-						  }
-						}
+      if( !node.className ) {
+        node.className += ' roll';
+      }
+    }
+  }
+}
 						</code>
 					</pre>
 
 				</section>
 
 				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
+					<h2>References</h2>
+					<ul>
+						<li><a href="http://www.ecma-international.org/ecma-262/6.0/ECMA-262.pdf">ES2015 Spec</a></li>
+						<li><a href="http://es6-features.org">es6-features.org</a></li>
+						<li><a href="https://github.com/hakimel/reveal.js">reveal.js</a></li>
+						<li>
+							<a href="http://webcache.googleusercontent.com/search?q=cache:443n-Pc8f-wJ:https://medium.com/%40wob/the-sad-state-of-web-development-1603a861d29f+&cd=1&hl=en&ct=clnk">
+								The Sad State of Web Development (google-cache)
+							</a>
+						</li>
+					</ul>
 				</section>
-
-				<section>
-					<h2>Speaker View</h2>
-					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
-					<p>Press the <em>S</em> key to try it out.</p>
-
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
-
-				<section>
-					<h2>Many thanks to:</h2>
-					<ol>
-						<li></li>
-						<li></li>
-					</ol>
-				</section>
-
 			</div>
 
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
-
 		<script>
 
 			// Full list of configuration options available at:
