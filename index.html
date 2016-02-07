@@ -15,7 +15,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/blood.css" id="theme">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+		<style>
+			.reveal h1, .reveal h2{
+				text-shadow: 3px 3px 0px #000000;
+			}
+		</style>
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -36,7 +41,7 @@
 		<div class="reveal">
 			<div class="slides">
 
-				<section data-background="/assets/ohm.gif">
+				<section>
 					<h1>ES2015 Fun Things</h1>
 					<h3>Some new and shiny things in JS</h3>
 					<p>
@@ -44,7 +49,7 @@
 					</p>
 				</section>
 
-				<section data-background="/assets/hmm.gif">
+				<section>
 				  <h2>Contents</h2>
 				  <ul>
 				    <li><a href="#">New things</a></li>
@@ -64,6 +69,56 @@
 
 					<section>
 						<h2>CONSTANTS</h2>
+						<pre>
+							<code class="hljs" data-trim>
+'use strict';
+(function () {
+	const PI = 3.141593;
+	PI = 5; // TypeError
+
+	const user = {
+		name: 'Arya'
+	};
+	user.lastName = 'Stark';
+})();
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h2>CONSTANTS</h2>
+						<p>Constants in ES6 define INMUTABLE BINDINGS, not values.</p>
+						<p>This means that a const reference cannot be re-assigned.</b>
+						<p>Objects are allowed to mutate.</p>
+
+						<aside class="notes">
+							With primitive values, a constant cannot change once its beens assigned.
+							Objects and Arrays are allowed to mutate.
+						</aside>
+					</section>
+
+					<section>
+						<h2>CONSTANTS</h2>
+						<pre>
+							<code class="hljs" data-trim>
+'use strict';
+(function () {
+	const user = {
+		name: 'Arya'
+	};
+	user.lastName = 'Stark'; // No Error!
+	let a = { type: 'city' };
+	user = a; //	TypeError
+
+	const coins = [];
+	coins.push({name: 'euro'});
+	coins.push({name: 'dollar'});
+	console.log(coins); // [ { name: 'euro' }, { name: 'dollar' } ]
+
+	coins = []; // TypeError
+})();
+							</code>
+						</pre>
 					</section>
 
 					<section>
@@ -150,7 +205,7 @@
 				</section>
 
 				<!-- ACKNOWLEDGEMENTS -->
-				<section data-background="/assets/ack.gif">
+				<section>
 					<section>
 						<h2>Acknowledgments</h2>
 						<ul>
@@ -171,17 +226,13 @@
 				</section>
 
 				<!-- REFERENCES -->
-				<section data-background="/assets/ref.gif">
+				<section>
 					<h1>References</h1>
 					<ul>
 						<li><a href="http://www.ecma-international.org/ecma-262/6.0/ECMA-262.pdf">ES2015 Spec</a></li>
 						<li><a href="http://es6-features.org">es6-features.org</a></li>
 						<li><a href="https://github.com/hakimel/reveal.js">reveal.js</a></li>
-						<li>
-							<a href="http://webcache.googleusercontent.com/search?q=cache:443n-Pc8f-wJ:https://medium.com/%40wob/the-sad-state-of-web-development-1603a861d29f+&cd=1&hl=en&ct=clnk">
-								The Sad State of Web Development (google-cache)
-							</a>
-						</li>
+						<li><a href="https://highlightjs.org/">highlight.js</a></li>
 						<li><a href="https://github.com/raveneyex/fun-things">▲</a></li>
 					</ul>
 				</section>
@@ -189,7 +240,7 @@
 				<section>
 					<h2>Pretty Code</h2>
 					<pre>
-						<code class="hljs" data-trim contenteditable>
+						<code class="hljs" data-trim>
 function linkify( selector ) {
 	if( supports3DTransforms ) {
 
