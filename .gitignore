@@ -2,6 +2,7 @@
 *.iml
 *.iws
 *.eml
+*.gif
 out/
 .DS_Store
 .svn
