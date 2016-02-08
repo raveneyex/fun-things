@@ -249,8 +249,215 @@
 
 					<section>
 						<h2>BUILT-IN METHODS</h2>
+						<h4><span class="code-inline">Object.assign</span></h4>
+						<p>Function for assigining own enumerable properties from source(s) into a destination object.</p>
 					</section>
 
+					<section>
+						<h2>BUILT-IN METHODS</h2>
+						<h4><span class="code-inline">Object.assign</span></h4>
+						<pre>
+							<code class="hljs" datatrim>
+'use strict';
+(function () {
+	/*  OBJECT.ASSIGN */
+	let a = Object.create({ test: 'Hidden with Object.assign'});
+	a.name = 'Joffrey';
+	console.log(a.test); //Hidden with Object.assign
+
+	let b = {lastName: 'Baratheon'};
+	let c = {house: 'Lannister'};
+	const character = {};
+
+	Object.assign(character, a, b, c);
+
+	console.log(character.name);	//Joffrey
+	console.log(character.lastName);	//Baratheon
+	console.log(character.house);	//Lannister
+	console.log(character.test);	//Undefined
+})();
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h2>BUILT-IN METHODS</h2>
+						<h4><span class="code-inline">Array.prototype.find</span></h4>
+						<p>Finds and return an element in the array</p>
+						<p>Unlike <span class="code-inline">Array.prototype.filter</span> this method does not create a new array.</p>
+					</section>
+
+					<section>
+						<h2>BUILT-IN METHODS</h2>
+						<h4><span class="code-inline">Array.prototype.find</span></h4>
+						<pre>
+							<code class="hljs" datatrim>
+'use strict';
+(function () {
+	/*  ARRAY.PROTOTYPE.FIND  */
+	const people = [
+		{name: 'Davos'},
+		{name: 'Stannis'},
+		{name: 'Melissandre'}
+	];
+	let result = people.find((x) => {
+		return x.name === 'Melissandre';
+	});
+	console.log(result); // {name: 'Melissandre'}
+})();
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h2>BUILT-IN METHODS</h2>
+						<h4><span class="code-inline">String.prototype.repeat</span></h4>
+						<p>Repeats a string the given number of times.</p>
+					</section>
+
+					<section>
+						<h2>BUILT-IN METHODS</h2>
+						<h4><span class="code-inline">String.prototype.repeat</span></h4>
+						<pre>
+							<code class="hljs" datatrim>
+'use strict';
+(function () {
+	/*  STRING.PROTOTYPE.REPEAT */
+	let crazy = 'cu'.repeat(2);
+	console.log(crazy); // cucu
+})();
+							</code>
+					</section>
+
+					<section>
+						<h2>BUILT-IN METHODS</h2>
+						<h4><span class="code-inline">String.prototype.startsWith</span></h4>
+						<p>Determines if a string begins with the given string. Returns true/false.</p>
+						<p>The second (optional) parameter of the function determines on which position of the string it should start looking.</p>
+					</section>
+
+					<section>
+						<h2>BUILT-IN METHODS</h2>
+						<h4><span class="code-inline">String.prototype.startsWith</span></h4>
+						<pre>
+							<code class="hljs" datatrim>
+'use strict';
+(function () {
+	/*  STRING.PROTOTYPE.STARTSWITH */
+	let bigString = 'Hello, I´m Batman';
+	let contains = bigString.startsWith('Hello');
+	console.log(contains); // true
+
+	let contains2 = bigString.startsWith('llo', 2);
+	console.log(contains2); // true
+})();
+							</code>
+					</section>
+
+					<section>
+						<h2>BUILT-IN METHODS</h2>
+						<h4><span class="code-inline">String.prototype.endsWith</span></h4>
+						<p>Determines if a string ends with the given string. Returns true/false.</p>
+						<p>The second (optional) parameter determines until which position of the string it should look. In practical terms, this will be the same as if the length of the original string is the given number.</p>
+					</section>
+
+					<section>
+						<h2>BUILT-IN METHODS</h2>
+						<h4><span class="code-inline">String.prototype.startsWith</span></h4>
+						<pre>
+							<code class="hljs" datatrim>
+'use strict';
+(function () {
+	/*  STRING.PROTOTYPE.ENDSWITH */
+	let bigString = 'Hello, I´m Batman';
+	let contains = bigString.endsWith('Batman');
+	console.log(contains); // true
+
+	let contains2 = bigString.endsWith('I´m', 10);
+	console.log(contains2); // true
+})();
+							</code>
+					</section>
+
+					<section>
+						<h2>BUILT-IN METHODS</h2>
+						<h4><span class="code-inline">String.prototype.includes</span></h4>
+						<p>Determines if a string contains the given string. Returns true/false.</p>
+						<p>The second (optional) parameter determines on which position to start looking</p>
+					</section>
+
+					<section>
+						<h2>BUILT-IN METHODS</h2>
+						<h4><span class="code-inline">String.prototype.startsWith</span></h4>
+						<pre>
+							<code class="hljs" datatrim>
+'use strict';
+(function () {
+	/*  STRING.PROTOTYPE.INCLUDES */
+	let bigString = 'NaNaNaNa Batman!';
+	let contains = bigString.includes('Batman');
+	console.log(contains); // true
+})();
+							</code>
+					</section>
+
+					<section>
+						<h2>BUILT-IN METHODS</h2>
+						<h4>Number type operations: <span class="code-inline">Number.isNaN</span> & <span class="code-inline">Number.isFinite</span></h4>
+						<p><span class="code-inline">Number.isNaN</span> determines if the given value is NaN (Not A Number).</p>
+						<p><span class="code-inline">Number.isFinite</span> determines if the given value is finite.</p>
+						<aside class="notes">
+							Number.isNaN can NOT be used to check if a random value is a number or not. This only tests for NaN.
+						</aside>
+					</section>
+
+					<section>
+						<h2>BUIL-IN METHODS</h2>
+						<h4>Number type operations: <span class="code-inline">Number.isNaN</span> & <span class="code-inline">Number.isFinite</span></h4>
+						<pre>
+							<code class="hljs" datatrim>
+'use strict';
+(function () {
+	/*  NUMBER TYPE OPERATIONS */
+	console.log(Number.isNaN(69)); // false
+	console.log(Number.isNaN(NaN)); // true
+
+	console.log(Number.isFinite(69)); // true
+	console.log(Number.isFinite(Infinity)); // false
+	console.log(Number.isNaN(Infinity)); // false
+});
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h2>BUILT-IN METHODS</h2>
+						<h4>Number safety ops: <span class="code-inline">Number.isSafeInteger</span> & <span class="code-inline">Math.trunc</span> & <span class="code-inline">Number.EPSILON</span></h4>
+						<p><span class="code-inline">Number.isSafeInteger</span> determines if the number is in the safe range.</p>
+						<p><span class="code-inline">Math.trunc</span> safely truncates a number to its integer part.</p>
+						<p><span class="code-inline">Number.EPSILON</span> provides a standard value for a more accurate comparison of floating-point numbers.</p>
+					</section>
+
+					<section>
+						<h2>BUIL-IN METHODS</h2>
+						<h4><span class="code-inline">Number.isSafeInteger</span> & <span class="code-inline">Math.trunc</span> & <span class="code-inline">Number.EPSILON</span></h4>
+						<pre>
+							<code class="hljs" datatrim>
+'use strict';
+(function () {
+	/*  NUMBER SAFETY OPERATIONS  */
+	console.log(Number.isSafeInteger(69)); // true
+	console.log(Number.isSafeInteger(666666666666666666666)); // false
+
+	console.log(Math.trunc(66.6)); // 66
+	console.log(Math.trunc(-0.45)); // -0 still ugly, but better than the past.
+
+	console.log(0.1 + 0.2 === 0.3); // false
+	console.log(Math.abs((0.1 + 0.2) - 0.3) < Number.EPSILON); // true
+})();
+							</code>
+						</pre>
+					</section>
 				</section>
 
 				<!-- FUN THINGS -->
@@ -345,6 +552,7 @@
 					<ul>
 						<li><a href="http://www.ecma-international.org/ecma-262/6.0/ECMA-262.pdf">ES2015 Spec</a></li>
 						<li><a href="http://es6-features.org">es6-features.org</a></li>
+						<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">MDN JavaScript reference</a></li>
 						<li><a href="https://github.com/hakimel/reveal.js">reveal.js</a></li>
 						<li><a href="https://highlightjs.org/">highlight.js</a></li>
 						<li><a href="https://github.com/raveneyex/fun-things">▲</a></li>
