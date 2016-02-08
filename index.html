@@ -20,6 +20,18 @@
 			.reveal h1, .reveal h2{
 				text-shadow: 3px 3px 0px #000000;
 			}
+			* {
+    		box-sizing: border-box;
+			}
+			.reveal .code-inline {
+				display: inline-block;
+				padding: 0.2em;
+				margin: 0;
+				font-size: 85%;
+				font-style: italic;
+				background-color: gray;
+				border-radius: 3px;
+			}
 		</style>
 
 		<!-- Code syntax highlighting -->
@@ -87,7 +99,7 @@
 
 					<section>
 						<h2>CONSTANTS</h2>
-						<p>Constants in ES6 define INMUTABLE BINDINGS, not values.</p>
+						<p><span class='code-inline'>const</span> in ES6 define INMUTABLE BINDINGS, not values.</p>
 						<p>This means that a const reference cannot be re-assigned.</b>
 						<p>Objects are allowed to mutate.</p>
 
@@ -122,15 +134,117 @@
 					</section>
 
 					<section>
-						<h2>SCOPING</h2>
+						<h2>SCOPING: let</h2>
+						<p></p>
+						<p>Unlike regular <span class='code-inline'>var</span> variables, <span class='code-inline'>let</span> variables exist only in the scope of the block they were defined.</p>
+						<p>Additionally, they are scoped to the running context.</p>
+						<p><span class="code-inline">const</span> also behave like this.</p>
+					</section>
+
+					<section>
+						<h2>SCOPING: let</h2>
+						<pre>
+							<code class="hljs" data-trim>
+'use strict';
+(function () {
+	/*	OLD SCHOOL	*/
+	var counterFunctions = [];
+	for (var i = 0; i < 2; i += 1) {
+		(function (i){
+				counterFunctions[i] = function () { return i; };
+		})(i);
+	}
+	console.log('i:',i);	//2
+	counterFunctions[0](); 	// 0
+	counterFunctions[1](); 	// 1
+})();
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h2>SCOPING: let</h2>
+						<pre>
+							<code class="hljs" data-trim>
+'use strict';
+(function (){
+	/*	NEW SCHOOL	*/
+	const counterFunctions = [];
+	for (let i = 0; i < 2; i += 1) {
+		counterFunctions[i] = function () { return i; };
+	}
+	console.log('i:',i);	//ReferenceError
+	counterFunctions[0](); 	// 0
+	counterFunctions[1](); 	// 1
+})();
+							</code>
+						</pre>
 					</section>
 
 					<section>
 						<h2>ARROW FUNCTIONS</h2>
+						<h4>The cool coffeescript leftovers</h4>
+					</section>
+
+					<section>
+						<h2>ARROW FUNCTIONS</h2>
+						<p>Simply put, <span class="code-inline">Arrow Functions</span> are a more concise closure definition syntax.</p>
+						<p>Their <span class="code-inline">this</span> points to the current object context and they're always anonymous functions</p>
+					</section>
+
+					<section>
+							<h2>ARROW FUNCTIONS</h2>
+							<pre>
+								<code class="hljs" data-trim>
+'use strict';
+(function () {
+	function Alpha () {
+		this.random = 'Random Stuff';
+
+		let print1 = function () {
+			console.log('this:', this);
+		};
+
+		let print2 = () => {
+			console.log('this:', this);
+		};
+
+		print1(); // this: undefined
+		print2(); // this: alpha { random: 'Random Stuff'}
+	}
+
+	let a = new Alpha();
+})();
+								</code>
+							</pre>
 					</section>
 
 					<section>
 						<h2>TEMPLATE LITERALS</h2>
+						<h4>New neat ways to work with Strings</h4>
+					</section>
+
+					<section>
+						<h2>TEMPLATE LITERALS</h2>
+						<pre>
+							<code class="hljs" datatrim>
+'use strict';
+(function () {
+	let user = { name: 'Allan', lastName: 'Turing' };
+	let message = `Hello Mr. ${user.name} ${user.lastName}`;
+	console.log(message);
+	let a = (message2) => {
+		console.log(message2);
+	};
+	a(`Hello Mr. ${user.name} ${user.lastName}`);
+})();
+							</code>
+					</section>
+
+					<section>
+						<h2>TEMPLATE LITERALS</h2>
+						<p>They are defined using <span class="code-inline">``</span> and the variable part inside <span class="code-inline">{}</span>.</p>
+						<p>They allow for variable interpolation. They can also be passed as parameters to methods.</p>
 					</section>
 
 					<section>
@@ -235,29 +349,6 @@
 						<li><a href="https://highlightjs.org/">highlight.js</a></li>
 						<li><a href="https://github.com/raveneyex/fun-things">▲</a></li>
 					</ul>
-				</section>
-
-				<section>
-					<h2>Pretty Code</h2>
-					<pre>
-						<code class="hljs" data-trim>
-function linkify( selector ) {
-	if( supports3DTransforms ) {
-
-		var nodes = document.querySelectorAll( selector );
-
-		for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-			var node = nodes[i];
-
-			if( !node.className ) {
-				node.className += ' roll';
-			}
-		}
-	}
-}
-						</code>
-					</pre>
-
 				</section>
 			</div>
 
