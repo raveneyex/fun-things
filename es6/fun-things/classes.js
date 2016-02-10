@@ -69,11 +69,3 @@
 
 	emptyBody.addPlugin({type: 'super_strength'});
 })();
-
-(function () {
-	'use strict';
-
-	var agregation = (baseClass, ...mixins) => {
-
-	};
-})();
