@@ -61,18 +61,6 @@
 					</p>
 				</section>
 
-				<section>
-				  <h2>Contents</h2>
-				  <ul>
-				    <li><a href="#">New things</a></li>
-				    <li><a href="#">Fun things</a></li>
-				    <li><a href="#">Shiny things</a></li>
-				    <li><a href="#">Babel.js</a></li>
-				    <li><a href="#">Acknowledgements</a></li>
-				    <li><a href="#">References</a></li>
-				  </ul>
-				</section>
-
 				<!-- NEW THINGS -->
 				<section>
 					<section data-background="/assets/new1.gif">
@@ -135,10 +123,7 @@
 
 					<section>
 						<h2>SCOPING: let</h2>
-						<p></p>
-						<p>Unlike regular <span class='code-inline'>var</span> variables, <span class='code-inline'>let</span> variables exist only in the scope of the block they were defined.</p>
-						<p>Additionally, they are scoped to the running context.</p>
-						<p><span class="code-inline">const</span> also behave like this.</p>
+						<h4>Block-scoped variables</h4>
 					</section>
 
 					<section>
@@ -182,14 +167,16 @@
 					</section>
 
 					<section>
-						<h2>ARROW FUNCTIONS</h2>
-						<h4>The cool coffeescript leftovers</h4>
+						<h2>SCOPING: let</h2>
+						<p></p>
+						<p>Unlike regular <span class='code-inline'>var</span> variables, <span class='code-inline'>let</span> variables exist only in the scope of the block they were defined.</p>
+						<p>Additionally, they are scoped to the running context.</p>
+						<p><span class="code-inline">const</span> also behave like this.</p>
 					</section>
 
 					<section>
 						<h2>ARROW FUNCTIONS</h2>
-						<p>Simply put, <span class="code-inline">Arrow Functions</span> are a more concise closure definition syntax.</p>
-						<p>Their <span class="code-inline">this</span> points to the current object context and they're always anonymous functions</p>
+						<h4>The cool coffeescript leftovers</h4>
 					</section>
 
 					<section>
@@ -220,6 +207,12 @@
 					</section>
 
 					<section>
+						<h2>ARROW FUNCTIONS</h2>
+						<p>Simply put, <span class="code-inline">Arrow Functions</span> are a more concise closure definition syntax.</p>
+						<p>Their <span class="code-inline">this</span> points to the current object context and they're always anonymous functions</p>
+					</section>
+
+					<section>
 						<h2>TEMPLATE LITERALS</h2>
 						<h4>New neat ways to work with Strings</h4>
 					</section>
@@ -243,10 +236,178 @@
 
 					<section>
 						<h2>TEMPLATE LITERALS</h2>
-						<p>They are defined using <span class="code-inline">``</span> and the variable part inside <span class="code-inline">{}</span>.</p>
+						<p>They are defined using <span class="code-inline">``</span> and the variable part inside <span class="code-inline">${}</span>.</p>
 						<p>They allow for variable interpolation. They can also be passed as parameters to methods.</p>
 					</section>
+				</section>
 
+				<section>
+					<section data-background="/assets/fun.gif">
+						<h1>Fun things</h1>
+					</section>
+
+					<section>
+						<h2>CLASS</h2>
+						<p>Traditional <span class="code-inline">Class</span> construct.</p>
+						<p>Boilerplate free and more intuitive</p>
+					</section>
+
+					<section>
+						<!--<h2>CLASS</h2>-->
+						<pre>
+							<code class="hljs">
+(function () {
+	'use strict';
+	class Human {
+		constructor(name, height, weight) {
+			this._name = name || '';
+			this._height = height || 190;
+			this._weight = weight || 180;
+		}
+
+		set name(name) {
+			this._name = name;
+		}
+		get name() {
+			console.log(`Hello, Im ${this._name}!`);
+			return this._name;
+		}
+		set height(height) {
+			this._height = height;
+		}
+		get height() {
+			return this._height;
+		}
+		set weight(weight) {
+			this._weight = weight;
+		}
+		get weight() {
+			return this._weight;
+		}
+
+		grow(height, weight) {
+			this._height += height;
+			this._weight += weight;
+			console.log(`${this._name}  has grown`);
+		}
+	}
+	const human = new Human('William Gibson');
+	human.name; //Hello, Im William Gibson!
+	...
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h2>INHERITANCE</h2>
+						<h4>Because prototype boilerplate is Ugly</h4>
+					</section>
+
+					<section>
+						<!--<h2>INHERITANCE</h2>-->
+						<pre>
+							<code class="hljs" datatrim>
+	...
+	class Cyborg extends Human {
+		constructor(name, height, weight, ...plugins) {
+			super(name, height, weight);
+			this._plugins = [...plugins];
+			// this._plugins = plugins; // Equivalent to previous line
+			// this._plugins = [plugins]; // [[],...] Array in Array
+		}
+
+		get name() {
+			return super.name;
+		}
+
+		static getHollowShell() {
+			return new Cyborg();
+		}
+
+		get plugins() {
+			return this._plugins;
+		}
+
+		addPlugin(plugin) {
+			this._plugins.push(plugin);
+		}
+	}
+
+	var molly = new Cyborg('Molly Millions', 170, 190, {type: 'byonic_nails'}, {type: 'enhanced_vision'});
+	var emptyBody = Cyborg.getHollowShell();
+
+	molly.addPlugin({type: 'super_strength'});
+	molly.grow(0, 10); // Molly Millions  has grown
+	molly.name; // Hello Im Molly Millions
+
+	emptyBody.addPlugin({type: 'super_strength'});
+})();
+						</code>
+						<aside class="notes">
+							notice the Static method.
+							notice the getters/setters
+							notice the base class access in name.
+							... notation discussed later
+						</aside>
+					</section>
+
+					<section>
+						<h2>MULTIPLE INHERITANCE</h2>
+						<h4>...with Mixins</h4>
+						<p>Messy af</p>
+					</section>
+
+					<section>
+						<pre>
+							<code class="hljs" datatrim>
+(function(){
+		window.location.href = "http://es6-features.org/#ClassInheritanceFromExpressions";
+})();
+							</code>
+					</section>
+				</section>
+
+				<!-- SHINY THINGS -->
+				<section data-background="/assets/shiny.gif">
+					<section>
+						<h1>Shiny things</h1>
+					</section>
+
+					<section>
+						<h2>DEFAULT PARAMETERS</h2>
+					</section>
+
+					<section>
+						<h2>REST PARAMETER</h2>
+					</section>
+
+					<section>
+						<h2>SPREAD OPERATOR</h2>
+					</section>
+
+					<section>
+						<h2>PROPERTY SHORTHAND</h2>
+					</section>
+
+					<section>
+						<h2>COMPUTED PROPERTY NAMES</h2>
+					</section>
+
+					<section>
+						<h2>ARRAY MATCHING</h2>
+					</section>
+
+					<section>
+						<h2>OBJECT MATCHING</h2>
+					</section>
+				</section>
+
+
+				<!-- BUILT IN -->
+				<section>
+					<section>
+						<h2>BUILT-IN METHODS</h2>
+					</section>
 					<section>
 						<h2>BUILT-IN METHODS</h2>
 						<h4><span class="code-inline">Object.assign</span></h4>
@@ -304,6 +465,64 @@
 		return x.name === 'Melissandre';
 	});
 	console.log(result); // {name: 'Melissandre'}
+})();
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h2>BUILT-IN METHODS</h2>
+						<h4>Number type operations: <span class="code-inline">Number.isNaN</span> & <span class="code-inline">Number.isFinite</span></h4>
+						<p><span class="code-inline">Number.isNaN</span> determines if the given value is NaN (Not A Number).</p>
+						<p><span class="code-inline">Number.isFinite</span> determines if the given value is finite.</p>
+						<aside class="notes">
+							Number.isNaN can NOT be used to check if a random value is a number or not. This only tests for NaN.
+						</aside>
+					</section>
+
+					<section>
+						<h2>BUILT-IN METHODS</h2>
+						<h4>Number type operations: <span class="code-inline">Number.isNaN</span> & <span class="code-inline">Number.isFinite</span></h4>
+						<pre>
+							<code class="hljs" datatrim>
+'use strict';
+(function () {
+	/*  NUMBER TYPE OPERATIONS */
+	console.log(Number.isNaN(69)); // false
+	console.log(Number.isNaN(NaN)); // true
+
+	console.log(Number.isFinite(69)); // true
+	console.log(Number.isFinite(Infinity)); // false
+	console.log(Number.isNaN(Infinity)); // false
+});
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h2>BUILT-IN METHODS</h2>
+						<h4>Number safety ops: <span class="code-inline">Number.isSafeInteger</span> & <span class="code-inline">Math.trunc</span> & <span class="code-inline">Number.EPSILON</span></h4>
+						<p><span class="code-inline">Number.isSafeInteger</span> determines if the number is in the safe range.</p>
+						<p><span class="code-inline">Math.trunc</span> safely truncates a number to its integer part.</p>
+						<p><span class="code-inline">Number.EPSILON</span> provides a standard value for a more accurate comparison of floating-point numbers.</p>
+					</section>
+
+					<section>
+						<h2>BUIL-IN METHODS</h2>
+						<h4><span class="code-inline">Number.isSafeInteger</span> & <span class="code-inline">Math.trunc</span> & <span class="code-inline">Number.EPSILON</span></h4>
+						<pre>
+							<code class="hljs" datatrim>
+'use strict';
+(function () {
+	/*  NUMBER SAFETY OPERATIONS  */
+	console.log(Number.isSafeInteger(69)); // true
+	console.log(Number.isSafeInteger(666666666666666666666)); // false
+
+	console.log(Math.trunc(66.6)); // 66
+	console.log(Math.trunc(-0.45)); // -0 still ugly, but better than the past.
+
+	console.log(0.1 + 0.2 === 0.3); // false
+	console.log(Math.abs((0.1 + 0.2) - 0.3) < Number.EPSILON); // true
 })();
 							</code>
 						</pre>
@@ -400,156 +619,8 @@
 })();
 							</code>
 					</section>
-
-					<section>
-						<h2>BUILT-IN METHODS</h2>
-						<h4>Number type operations: <span class="code-inline">Number.isNaN</span> & <span class="code-inline">Number.isFinite</span></h4>
-						<p><span class="code-inline">Number.isNaN</span> determines if the given value is NaN (Not A Number).</p>
-						<p><span class="code-inline">Number.isFinite</span> determines if the given value is finite.</p>
-						<aside class="notes">
-							Number.isNaN can NOT be used to check if a random value is a number or not. This only tests for NaN.
-						</aside>
-					</section>
-
-					<section>
-						<h2>BUIL-IN METHODS</h2>
-						<h4>Number type operations: <span class="code-inline">Number.isNaN</span> & <span class="code-inline">Number.isFinite</span></h4>
-						<pre>
-							<code class="hljs" datatrim>
-'use strict';
-(function () {
-	/*  NUMBER TYPE OPERATIONS */
-	console.log(Number.isNaN(69)); // false
-	console.log(Number.isNaN(NaN)); // true
-
-	console.log(Number.isFinite(69)); // true
-	console.log(Number.isFinite(Infinity)); // false
-	console.log(Number.isNaN(Infinity)); // false
-});
-							</code>
-						</pre>
-					</section>
-
-					<section>
-						<h2>BUILT-IN METHODS</h2>
-						<h4>Number safety ops: <span class="code-inline">Number.isSafeInteger</span> & <span class="code-inline">Math.trunc</span> & <span class="code-inline">Number.EPSILON</span></h4>
-						<p><span class="code-inline">Number.isSafeInteger</span> determines if the number is in the safe range.</p>
-						<p><span class="code-inline">Math.trunc</span> safely truncates a number to its integer part.</p>
-						<p><span class="code-inline">Number.EPSILON</span> provides a standard value for a more accurate comparison of floating-point numbers.</p>
-					</section>
-
-					<section>
-						<h2>BUIL-IN METHODS</h2>
-						<h4><span class="code-inline">Number.isSafeInteger</span> & <span class="code-inline">Math.trunc</span> & <span class="code-inline">Number.EPSILON</span></h4>
-						<pre>
-							<code class="hljs" datatrim>
-'use strict';
-(function () {
-	/*  NUMBER SAFETY OPERATIONS  */
-	console.log(Number.isSafeInteger(69)); // true
-	console.log(Number.isSafeInteger(666666666666666666666)); // false
-
-	console.log(Math.trunc(66.6)); // 66
-	console.log(Math.trunc(-0.45)); // -0 still ugly, but better than the past.
-
-	console.log(0.1 + 0.2 === 0.3); // false
-	console.log(Math.abs((0.1 + 0.2) - 0.3) < Number.EPSILON); // true
-})();
-							</code>
-						</pre>
-					</section>
 				</section>
 
-				<!-- FUN THINGS -->
-				<section>
-					<section data-background="/assets/fun.gif">
-						<h1>Fun things</h1>
-					</section>
-
-					<section>
-						<h2>CLASS</h2>
-						<p>Traditional <span="code-inline">Class<span> construct.</p>
-						<p>Boilerplate free and more intuitive</b>
-					</section>
-
-					<section>
-						<h2>CLASS</h2>
-						<pre>
-							<code class="hljs" datatrim>
-'use strict';
-'use strict';
-(function () {
-	/*  CLASS DEFINITION */
-	class User {
-		constructor(name, lastName, gender) {
-			this.name = name;
-			this.lastName = lastName;
-			this.gender = gender;
-		}
-
-		greetPerson(person) {
-			console.log(`Hello ${person}, my Name is ${this.name} ${this.lastName}`);
-		}
-	}
-	let a = new User('Andrés', 'Ossa', 'Male');
-	a.greetPerson('Isaac Asimov');
-})();
-							</code>
-						</pre>
-					</section>
-
-					<section>
-						<h2>INHERITANCE</h2>
-						<p>More classic Object-Oriented constructs</p>
-					</section>
-
-					<section>
-						<h2>INHERITANCE</h2>
-						<pre>
-							<code class="hljs" datatrim>
-							</code>
-						</pre>
-					</section>
-
-					<section>
-						<h2>INHERITANCE... with mixins</h2>
-					</section>
-				</section>
-
-				<!-- SHINY THINGS -->
-				<section data-background="/assets/shiny.gif">
-					<section>
-						<h1>Shiny things</h1>
-					</section>
-
-					<section>
-						<h2>DEFAULT PARAMETERS</h2>
-					</section>
-
-					<section>
-						<h2>REST PARAMETER</h2>
-					</section>
-
-					<section>
-						<h2>SPREAD OPERATOR</h2>
-					</section>
-
-					<section>
-						<h2>PROPERTY SHORTHAND</h2>
-					</section>
-
-					<section>
-						<h2>COMPUTED PROPERTY NAMES</h2>
-					</section>
-
-					<section>
-						<h2>ARRAY MATCHING</h2>
-					</section>
-
-					<section>
-						<h2>OBJECT MATCHING</h2>
-					</section>
-				</section>
 
 				<!-- BABEL.JS -->
 				<section data-background="/assets/want.gif">
