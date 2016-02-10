@@ -241,6 +241,7 @@
 					</section>
 				</section>
 
+				<!--FUN THINGS -->
 				<section>
 					<section data-background="/assets/fun.gif">
 						<h1>Fun things</h1>
@@ -296,6 +297,10 @@
 	...
 							</code>
 						</pre>
+						<aside class="notes">
+							Notice the grow method, defined almost as a property.
+							Not exclusive to class.
+						</aside>
 					</section>
 
 					<section>
@@ -312,8 +317,6 @@
 		constructor(name, height, weight, ...plugins) {
 			super(name, height, weight);
 			this._plugins = [...plugins];
-			// this._plugins = plugins; // Equivalent to previous line
-			// this._plugins = [plugins]; // [[],...] Array in Array
 		}
 
 		get name() {
@@ -355,50 +358,185 @@
 						<h2>MULTIPLE INHERITANCE</h2>
 						<h4>...with Mixins</h4>
 						<p>Messy af</p>
+						<p>See it at <a href="http://es6-features.org/#ClassInheritanceFromExpressions">es6-features.org</a>.</p>
 					</section>
 
-					<section>
-						<pre>
-							<code class="hljs" datatrim>
-(function(){
-		window.location.href = "http://es6-features.org/#ClassInheritanceFromExpressions";
-})();
-							</code>
-					</section>
 				</section>
 
 				<!-- SHINY THINGS -->
-				<section data-background="/assets/shiny.gif">
-					<section>
+				<section>
+					<section data-background="/assets/shiny.gif">
 						<h1>Shiny things</h1>
 					</section>
 
 					<section>
 						<h2>DEFAULT PARAMETERS</h2>
+						<pre>
+							<code class="hljs" datatrim>
+(function () {
+	'use strict';
+	function randomCalc ( a = 1 , b = 1 , c = 1 ) {
+		return a + b + c;
+	}
+	console.log(randomCalc()); // 3
+})();
+							</code>
+						</pre>
+					</section>
+
+
+					<section>
+						<h2>REST PARAMETER</h2>
+						<pre>
+							<code class="hljs" datatrim>
+(function () {
+	'use strict';
+	function foo (a, b, ...c) {
+		console.log(`c: ${c}`);
+		console.log('Is c an Array?', Array.isArray(c));
+		console.log('Length: ', c.length);
+	}
+	//function foo(...params) {...}; //SyntaxError
+
+	foo(1, 2, 3, 4, 5);
+	// c: 3,4,5
+	// Is c an Array? true
+	// Length:  3
+	foo(1, 2);
+	// c:
+	// Is c an Array? true
+	// Length:  0
+})();
+							</code>
+						</pre>
 					</section>
 
 					<section>
 						<h2>REST PARAMETER</h2>
+						<p>Aggregation of remaining arguments into a single parameter</p>
+						<p>Denoted by <span class="code-inline">...</span>.</p>
+						<p>It can ONLY be used in the last parameter of a function definition.</p>
+						<p>Passes the <span class="code-inline">Array.isArray</span> test.</p>
 					</section>
 
 					<section>
 						<h2>SPREAD OPERATOR</h2>
+						<pre>
+							<code class="hljs" datatrim>
+(function () {
+	'use strict';
+	function bar (a, b, c, d, e) {
+		console.log(`c: ${c}`);
+		console.log(`d: ${d}`);
+		console.log(`e: ${e}`);
+	}
+	var params = [ 'hello', true, 7 ];
+	var other1 = [ 1, 2, ...params ];// [ 1, 2, "hello", true, 7 ]
+	var other2 = [ 1, 2, params];// [ 1, 2, [ "hello", true, 7]]
+
+	bar(1, 2, ...params);
+	// hello
+	// true
+	// 7
+	bar(...other1);
+})();
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<h2>SPREAD OPERATOR</h2>
+						<p>Used to spread the elements of an iterable collection into its elements</p>
+						<p>Also denoted by <span class="code-inline">...</span>.</p>
+					</section>
+
+					<section>
+						<h2>SPREAD OPERATOR</h2>
+						<pre>
+							<code class="hljs" datatrim>
+(function(){
+	'use strict';
+	var str = 'foobar';
+	var strArr = [...str];// [ f, o, o, b, a, r ]
+	console.log(strArr.length); // 6
+})();
+							</code>
+						</pre>
 					</section>
 
 					<section>
 						<h2>PROPERTY SHORTHAND</h2>
+						<pre>
+							<code class="hljs" datatrim>
+(function () {
+	'use strict';
+	let a = 'hello';
+	let b = 'bye';
+	let obj = {a, b};
+	console.log(obj); // Object {a: "hello", b: "bye"}
+})();
+							</code>
+						</pre>
 					</section>
 
 					<section>
 						<h2>COMPUTED PROPERTY NAMES</h2>
+						<pre>
+							<code class="hljs" datatrim>
+(function () {
+	'use strict';
+	function foo () {
+		return 'foo';
+	}
+	var bar = 'hai';
+	var obj = {
+		foo: 'bar',
+		[ 'prop_' + foo() ]: 42,
+		[ 'prop_' + bar]: 43
+	};
+	console.log(obj); // Object {foo: "bar", prop_foo: 42, prop_hai: 43}
+})();
+							</code>
+						</pre>
 					</section>
 
 					<section>
 						<h2>ARRAY MATCHING</h2>
+						<pre>
+							<code class="hljs" datatrim>
+(function () {
+	/* PENDING. NEEDS BABEL */
+	'use strict';
+	var list = [ 1, 2, 3 ];
+	var [a, b, c] = list;
+	console.log(`a: ${a}`); //a: 1
+	console.log(`b: ${b}`); //b: 2
+	console.log(`c: ${c}`); //c: 3
+	// [b, a] = [ a, b ];
+	console.log(`a: ${a}`); //a: 2
+	console.log(`b: ${b}`); //b: 1
+})();
+							</code>
+						</pre>
 					</section>
 
 					<section>
 						<h2>OBJECT MATCHING</h2>
+						<pre>
+							<code class="hljs" datatrim>
+(function () {
+	/* PENDING. NEEDS BABEL */
+	'use strict';
+	function getObj () {
+		return { a: 'a', b: 'b' };
+	}
+
+	var { a , b} = getObj();
+	console.log(`a: ${a}`); // a: a
+	console.log(`b: ${b}`); // b: b
+})();
+							</code>
+						</pre>
 					</section>
 				</section>
 
