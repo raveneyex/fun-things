@@ -1,20 +1,21 @@
 'use strict';
+
 (function () {
-	const PI = 3.141593;
+	var PI = 3.141593;
 	//PI = 5; // TypeError
 
-	const user = {
+	var user = {
 		name: 'Arya'
 	};
 	user.lastName = 'Stark';
-	console.log(user);  // { name: 'Arya', lastName: 'Stark' }
+	console.log(user); // { name: 'Arya', lastName: 'Stark' }
 
-	let a = { type: 'city' };
+	var a = { type: 'city' };
 	//user = a; //	TypeError
 
-	const coins = [];
-	coins.push({name: 'euro'});
-	coins.push({name: 'dollar'});
+	var coins = [];
+	coins.push({ name: 'euro' });
+	coins.push({ name: 'dollar' });
 	console.log(coins); // [ { name: 'euro' }, { name: 'dollar' } ]
 
 	//coins = []; // TypeError
