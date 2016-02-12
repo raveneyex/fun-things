@@ -759,59 +759,55 @@
 					</section>
 				</section>
 
-
 				<!-- BABEL.JS -->
-				<section data-background="/assets/want.gif">
-					<section>
+				<section>
+					<section data-background="/assets/want.gif">
 						<h1>Babel.js</h1>
 					</section>
 
 					<section>
 						<h2><a href="https://babeljs.io/">Babel.js</a></h2>
-                        <p>Babel.js is a javascrip compiler (transpiler) that takes your ES6 code-of-tomorrow and spits out code that can be executed today.</p>
+                        <p>Babel.js is a javascript compiler (transpiler) that takes your ES6 code-of-tomorrow and spits out code that can be executed today.</p>
                         <p>Easily configurable and with a lot of plugins.</p>
 					</section>
 
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### Babel.js Gulp Configuration
+                    <section>
+                        <h4>Babel.js Gulp configuration</h4>
+                        <pre>
+                            <code>
+> echo '{ "presets": ["es2015"] }' > .babelrc
+> touch gulpfile.babel.js
+> npm install babel-core --save-dev
+> npm install babel-preset-es2015 --save-dev
+> npm install gulp --save-dev
+> npm install gulp-babel --save-dev
+                            </code>
+                        </pre>
+                    </section>
 
-                            #### Basics
-                            1. Add the `.babelrc` file
-                            - `echo '{ "presets": ["es2015"] }' > .babelrc
-                            
-                            2. Create a `gulpfile.babel.js` file
-                            - `touch gulpfile.babel.js`
+                    <section>
+                        <pre>
+                            <code>
+'use strict';
+import gulp from 'gulp';
+import babel from 'gulp-babel';
 
-                            3. Install Dependencies
-                            - `npm install babel-core --save-dev`
-                            - `npm install babel-preset-es2015 --save-dev`
-                            - `npm install gulp --save-dev`
-                            - `npm install gulp-babel --save-dev`
-
-                            #### Gulp Task
-
-                            ```
-                            'use strict';
-                            import gulp from 'gulp';
-                            import babel from 'gulp-babel';
-
-                            const sourceFiles = ['es6/**/*.js'];
-                            let transpileSources = () => {
-                                return gulp.src(sourceFiles)
-                                    .pipe(babel({presets: ['es2015']}))
-                                    .pipe(gulp.dest('.'));
-                            };
-                            gulp.task('scripts', transpileSources);
-                            ```
-                        </script>
+const sourceFiles = ['es6/**/*.js'];
+let transpileSources = () => {
+    return gulp.src(sourceFiles)
+        .pipe(babel({presets: ['es2015']}))
+        .pipe(gulp.dest('.'));
+};
+gulp.task('scripts', transpileSources);
+                            </code>
+                        </pre>
                     </section>
 				</section>
 
 				<!-- ACKNOWLEDGEMENTS -->
 				<section>
 					<section>
-						<h2>Acknowledgments</h2>
+						<h2>Acknowledgements</h2>
 						<ul>
 							<li>The ECMA body</li>
 							<li>The JavaScript community</li>
@@ -845,8 +841,8 @@
 
 		</div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+        <script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
 		<script>
 
 			// Full list of configuration options available at:
@@ -861,7 +857,6 @@
 
 				// Optional reveal.js plugins
 				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
 					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
